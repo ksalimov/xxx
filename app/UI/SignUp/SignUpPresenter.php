@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\UI\SignUp;
 
 use App\Mapper\FormData\SignUpFormData;
-use App\Repository\UserRepository;
 use App\UseCase\SignUpUseCase\Exception\UserAlreadyExistsException;
 use App\UseCase\SignUpUseCase\SignUpRequest;
 use App\UseCase\SignUpUseCase\SignUpUseCase;
@@ -13,15 +12,11 @@ use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 use Nette\Application\UI\Presenter;
 use Nette\Http\Session;
-use Nette\Security\Passwords;
-use Tracy\ILogger;
 
 class SignUpPresenter extends Presenter
 {
     public function __construct(
-        private UserRepository $userRepository,
-        private Passwords $passwords,
-        private ILogger $logger,
+        private SignUpUseCase $signUpUseCase,
         Session $session
     ) {
         parent::__construct();
@@ -59,8 +54,7 @@ class SignUpPresenter extends Presenter
     public function signUp(Form $form, SignUpFormData $formData): void
     {
         try {
-            (new SignUpUseCase($this->userRepository, $this->passwords, $this->logger))
-                ->execute(new SignUpRequest($formData));
+            $this->signUpUseCase->execute(new SignUpRequest($formData));
 
             $this->flashMessage('Registration successful. Please verify your email.', 'success');
             $this->redirect('Home:default');
