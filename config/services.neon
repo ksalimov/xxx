@@ -1,6 +1,6 @@
 services:
 	- App\Core\RouterFactory::createRouter
-
+	security.passwords: Nette\Security\Passwords(::PASSWORD_BCRYPT, [cost: 12])
 
 search:
 	-	in: %appDir%
