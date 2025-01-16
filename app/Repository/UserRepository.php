@@ -49,6 +49,13 @@ class UserRepository
             ->fetch();
     }
 
+    public function findByVerificationToken(string $token): ?ActiveRow
+    {
+        return $this->explorer->table(self::TABLE_NAME)
+            ->where(self::FIELD_VERIFICATION_TOKEN, $token)
+            ->fetch();
+    }
+
     public function update(int $id, array $data): int
     {
         return $this->explorer->table(self::TABLE_NAME)
@@ -61,5 +68,22 @@ class UserRepository
         return $this->explorer->table(self::TABLE_NAME)
             ->where(self::FIELD_ID, $id)
             ->delete();
+    }
+
+    public function saveVerificationToken(string $email, string $token): void
+    {
+        $this->explorer->table(self::TABLE_NAME)
+            ->where(self::FIELD_EMAIL, $email)
+            ->update([self::FIELD_VERIFICATION_TOKEN => $token]);
+    }
+
+    public function verifyUser(int $userId): void
+    {
+        $this->explorer->table(self::TABLE_NAME)
+            ->where(self::FIELD_ID, $userId)
+            ->update([
+                self::FIELD_VERIFIED => 1,
+                self::FIELD_VERIFICATION_TOKEN => null,
+            ]);
     }
 }

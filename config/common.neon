@@ -1,5 +1,7 @@
 parameters:
-
+    email:
+        senderEmail: 'no-reply@example.com'
+        senderName: 'Example'
 
 application:
 	errorPresenter:

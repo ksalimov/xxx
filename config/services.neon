@@ -1,6 +1,8 @@
 services:
 	- App\Core\RouterFactory::createRouter
 	- App\UseCase\SignUpUseCase\SignUpUseCase
+	- App\UseCase\SendVerificationEmailUseCase\SendVerificationEmailUseCase(%email.senderEmail%, %email.senderName%)
+	- App\UseCase\VerifyEmailUseCase\VerifyEmailUseCase
 	security.passwords: Nette\Security\Passwords(::PASSWORD_BCRYPT, [cost: 12])
 
 search:
