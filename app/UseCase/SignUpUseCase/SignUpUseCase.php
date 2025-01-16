@@ -3,6 +3,7 @@
 namespace App\UseCase\SignUpUseCase;
 
 use App\Entity\User;
+use App\Exception\UseCaseException;
 use App\Mapper\FormData\SignUpFormData;
 use App\Repository\UserRepository;
 use App\UseCase\SignUpUseCase\Exception\UserAlreadyExistsException;
@@ -38,7 +39,7 @@ class SignUpUseCase
             $explorer->rollBack();
 
             $this->logger->log($e, Debugger::CRITICAL);
-            throw $e;
+            throw new UseCaseException($e->getMessage());
         }
 
     }

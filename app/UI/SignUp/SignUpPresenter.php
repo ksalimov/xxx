@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\UI\SignUp;
 
+use App\Exception\UseCaseException;
 use App\Mapper\FormData\SignUpFormData;
 use App\UseCase\SignUpUseCase\Exception\UserAlreadyExistsException;
 use App\UseCase\SignUpUseCase\SignUpRequest;
 use App\UseCase\SignUpUseCase\SignUpUseCase;
-use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 use Nette\Application\UI\Presenter;
 use Nette\Http\Session;
@@ -60,9 +60,7 @@ class SignUpPresenter extends Presenter
             $this->redirect('Home:default');
         } catch (UserAlreadyExistsException $e) {
             $form[SignUpFormData::FIELD_EMAIL]->addError($e->getMessage());
-        } catch (AbortException $e) {
-            throw $e;
-        } catch (\Throwable $e) {
+        } catch (UseCaseException $e) {
             $form->addError('Something went wrong. Please try again later or contact support if the issue continues.');
         }
     }
