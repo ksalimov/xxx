@@ -36,7 +36,7 @@ class SendVerificationEmailUseCase
 
     private function getVerificationLink(string $token): string
     {
-        return $this->linkGenerator->link('VerifyEmail:default', ['token' => $token]);
+        return $this->linkGenerator->link('Front:VerifyEmail:default', ['token' => $token]);
     }
 
     private function createVerificationEmail(string $userEmail, string $verificationLink): Message

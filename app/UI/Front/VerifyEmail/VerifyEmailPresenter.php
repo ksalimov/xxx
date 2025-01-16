@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\VerifyEmail;
+namespace App\UI\Front\VerifyEmail;
 
 use App\UseCase\VerifyEmailUseCase\VerifyEmailRequest;
 use App\UseCase\VerifyEmailUseCase\VerifyEmailUseCase;

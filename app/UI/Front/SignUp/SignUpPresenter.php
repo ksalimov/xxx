@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\SignUp;
+namespace App\UI\Front\SignUp;
 
 use App\Exception\UseCaseException;
 use App\Mapper\FormData\SignUpFormData;
