@@ -24,7 +24,7 @@ class VerifyEmailUseCase
             $user = $this->userRepository->findByVerificationToken($token);
 
             if ($user) {
-                $this->userRepository->verifyUser($user->id);
+                $this->userRepository->verifyUser($user->getId());
                 $response->setVerified(true);
             } else {
                 $response->setVerified(false);

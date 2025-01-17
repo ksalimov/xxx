@@ -15,6 +15,8 @@ class UserRepository
     private const FIELD_PASSWORD = 'password';
     private const FIELD_VERIFIED = 'verified';
     private const FIELD_VERIFICATION_TOKEN = 'verification_token';
+    private const FIELD_CREATED_AT = 'created_at';
+    private const FIELD_MODIFIED_AT = 'modified_at';
 
     public function __construct(
         readonly private Explorer $explorer
@@ -36,24 +38,30 @@ class UserRepository
         ]);
     }
 
-    public function getById(int $id): ?ActiveRow
+    public function getById(int $id): ?User
     {
-        return $this->explorer->table(self::TABLE_NAME)
-            ->get($id);
+        return $this->mapToUser(
+            $this->explorer->table(self::TABLE_NAME)
+                ->get($id)
+        );
     }
 
-    public function getByEmail(string $email): ?ActiveRow
+    public function getByEmail(string $email): ?User
     {
-        return $this->explorer->table(self::TABLE_NAME)
-            ->where(self::FIELD_EMAIL, $email)
-            ->fetch();
+        return $this->mapToUser(
+            $this->explorer->table(self::TABLE_NAME)
+                ->where(self::FIELD_EMAIL, $email)
+                ->fetch()
+        );
     }
 
-    public function findByVerificationToken(string $token): ?ActiveRow
+    public function findByVerificationToken(string $token): ?User
     {
-        return $this->explorer->table(self::TABLE_NAME)
-            ->where(self::FIELD_VERIFICATION_TOKEN, $token)
-            ->fetch();
+        return $this->mapToUser(
+            $this->explorer->table(self::TABLE_NAME)
+                ->where(self::FIELD_VERIFICATION_TOKEN, $token)
+                ->fetch()
+        );
     }
 
     public function update(int $id, array $data): int
@@ -85,5 +93,22 @@ class UserRepository
                 self::FIELD_VERIFIED => 1,
                 self::FIELD_VERIFICATION_TOKEN => null,
             ]);
+    }
+
+    private function mapToUser(?ActiveRow $activeRow): ?User
+    {
+        if (!$activeRow) {
+            return null;
+        }
+
+        return (new User())
+            ->setId($activeRow->{self::FIELD_ID})
+            ->setUsername($activeRow->{self::FIELD_USERNAME})
+            ->setEmail($activeRow->{self::FIELD_EMAIL})
+            ->setPassword($activeRow->{self::FIELD_PASSWORD})
+            ->setVerified((bool) $activeRow->{self::FIELD_VERIFIED})
+            ->setVerificationToken($activeRow->{self::FIELD_VERIFICATION_TOKEN})
+            ->setCreatedAt($activeRow->{self::FIELD_CREATED_AT})
+            ->setModifiedAt($activeRow->{self::FIELD_MODIFIED_AT});
     }
 }

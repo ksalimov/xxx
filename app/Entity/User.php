@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use DateTimeImmutable;
+use Nette\Utils\DateTime;
 
 class User
 {
@@ -12,8 +12,8 @@ class User
     private string $password;
     private bool $verified = false;
     private ?string $verificationToken = null;
-    private DateTimeImmutable $createdAt;
-    private DateTimeImmutable $modifiedAt;
+    private DateTime $createdAt;
+    private DateTime $modifiedAt;
 
     public function getId(): int
     {
@@ -81,23 +81,23 @@ class User
         return $this;
     }
 
-    public function getCreatedAt(): DateTimeImmutable
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTimeImmutable $createdAt): self
+    public function setCreatedAt(DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
         return $this;
     }
 
-    public function getModifiedAt(): DateTimeImmutable
+    public function getModifiedAt(): DateTime
     {
         return $this->modifiedAt;
     }
 
-    public function setModifiedAt(DateTimeImmutable $modifiedAt): self
+    public function setModifiedAt(DateTime $modifiedAt): self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
