@@ -22,11 +22,6 @@ class UserRepository
         readonly private Explorer $explorer
     ) {}
 
-    public function getExplorer(): Explorer
-    {
-        return $this->explorer;
-    }
-
     public function create(User $user): User
     {
         return $this->mapToUser(
