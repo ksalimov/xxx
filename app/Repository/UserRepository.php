@@ -27,15 +27,17 @@ class UserRepository
         return $this->explorer;
     }
 
-    public function create(User $user): ActiveRow
+    public function create(User $user): User
     {
-        return $this->explorer->table(self::TABLE_NAME)->insert([
-            self::FIELD_USERNAME => $user->getUsername(),
-            self::FIELD_EMAIL => $user->getEmail(),
-            self::FIELD_PASSWORD => $user->getPassword(),
-            self::FIELD_VERIFIED => $user->isVerified(),
-            self::FIELD_VERIFICATION_TOKEN => $user->getVerificationToken(),
-        ]);
+        return $this->mapToUser(
+            $this->explorer->table(self::TABLE_NAME)->insert([
+                self::FIELD_USERNAME => $user->getUsername(),
+                self::FIELD_EMAIL => $user->getEmail(),
+                self::FIELD_PASSWORD => $user->getPassword(),
+                self::FIELD_VERIFIED => $user->isVerified(),
+                self::FIELD_VERIFICATION_TOKEN => $user->getVerificationToken(),
+            ])
+        );
     }
 
     public function getById(int $id): ?User

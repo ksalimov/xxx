@@ -9,7 +9,6 @@ use App\Repository\UserRepository;
 use App\UseCase\SendVerificationEmailUseCase\SendVerificationEmailRequest;
 use App\UseCase\SendVerificationEmailUseCase\SendVerificationEmailUseCase;
 use App\UseCase\SignUpUseCase\Exception\UserAlreadyExistsException;
-use Nette\Database\Table\ActiveRow;
 use Nette\Schema\ValidationException;
 use Nette\Security\Passwords;
 use Throwable;
@@ -47,7 +46,6 @@ class SignUpUseCase
             $this->logger->log($e, Debugger::CRITICAL);
             throw new UseCaseException($e->getMessage());
         }
-
     }
 
     private function validateUserNotExists(UserFormData $formData): void
@@ -57,7 +55,7 @@ class SignUpUseCase
         }
     }
 
-    private function createUser(UserFormData $formData): ActiveRow
+    private function createUser(UserFormData $formData): User
     {
         $user = new User();
         $user
