@@ -4,7 +4,7 @@ namespace App\UseCase\SignUpUseCase;
 
 use App\Entity\User;
 use App\Exception\UseCaseException;
-use App\Mapper\FormData\SignUpFormData;
+use App\Mapper\FormData\UserFormData;
 use App\Repository\UserRepository;
 use App\UseCase\SendVerificationEmailUseCase\SendVerificationEmailRequest;
 use App\UseCase\SendVerificationEmailUseCase\SendVerificationEmailUseCase;
@@ -50,14 +50,14 @@ class SignUpUseCase
 
     }
 
-    private function validateUserNotExists(SignUpFormData $formData): void
+    private function validateUserNotExists(UserFormData $formData): void
     {
         if (!empty($this->userRepository->getByEmail($formData->getEmail()))) {
             throw new UserAlreadyExistsException('User with this email already exists.');
         }
     }
 
-    private function createUser(SignUpFormData $formData): ActiveRow
+    private function createUser(UserFormData $formData): ActiveRow
     {
         $user = new User();
         $user

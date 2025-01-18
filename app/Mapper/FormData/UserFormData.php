@@ -2,7 +2,7 @@
 
 namespace App\Mapper\FormData;
 
-readonly class SignUpFormData
+readonly class UserFormData
 {
     const FIELD_USERNAME = 'username';
     const FIELD_EMAIL = 'email';

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\UI\Front\SignUp;
 
 use App\Exception\UseCaseException;
-use App\Mapper\FormData\SignUpFormData;
+use App\Mapper\FormData\UserFormData;
 use App\UseCase\SignUpUseCase\Exception\UserAlreadyExistsException;
 use App\UseCase\SignUpUseCase\SignUpRequest;
 use App\UseCase\SignUpUseCase\SignUpUseCase;
@@ -51,7 +51,7 @@ class SignUpPresenter extends Presenter
         return $form;
     }
 
-    public function signUp(Form $form, SignUpFormData $formData): void
+    public function signUp(Form $form, UserFormData $formData): void
     {
         try {
             $this->signUpUseCase->execute(new SignUpRequest($formData));
@@ -59,7 +59,7 @@ class SignUpPresenter extends Presenter
             $this->flashMessage('Registration successful. Please verify your email.', 'success');
             $this->redirect('Home:default');
         } catch (UserAlreadyExistsException $e) {
-            $form[SignUpFormData::FIELD_EMAIL]->addError($e->getMessage());
+            $form[UserFormData::FIELD_EMAIL]->addError($e->getMessage());
         } catch (UseCaseException $e) {
             $form->addError('Something went wrong. Please try again later or contact support if the issue continues.');
         }

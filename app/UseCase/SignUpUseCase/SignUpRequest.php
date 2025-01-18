@@ -2,15 +2,15 @@
 
 namespace App\UseCase\SignUpUseCase;
 
-use App\Mapper\FormData\SignUpFormData;
+use App\Mapper\FormData\UserFormData;
 
 readonly class SignUpRequest
 {
     public function __construct(
-        private SignUpFormData $formData,
+        private UserFormData $formData,
     ) {}
 
-    public function getFormData(): SignUpFormData
+    public function getFormData(): UserFormData
     {
         return $this->formData;
     }
