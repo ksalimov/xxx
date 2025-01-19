@@ -4,10 +4,6 @@ namespace App\Mapper\FormData;
 
 readonly class UserFormData
 {
-    const FIELD_USERNAME = 'username';
-    const FIELD_EMAIL = 'email';
-    const FIELD_PASSWORD = 'password';
-
     public function __construct(
         private string $username,
         private string $email,
