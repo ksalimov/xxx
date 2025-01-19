@@ -4,3 +4,9 @@
 /log
 /temp
 /vendor
+/node_modules
+/www
+!/www/.htaccess
+!/www/favicon.ico
+!/www/index.php
+!/www/robots.txt
