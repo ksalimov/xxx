@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Nette\Database\Explorer;
 use Nette\Database\Table\ActiveRow;
+use Nette\Utils\DateTime;
 
 class UserRepository
 {
@@ -21,19 +22,6 @@ class UserRepository
     public function __construct(
         readonly private Explorer $explorer
     ) {}
-
-    public function create(User $user): User
-    {
-        return $this->mapToUser(
-            $this->explorer->table(self::TABLE_NAME)->insert([
-                self::FIELD_USERNAME => $user->getUsername(),
-                self::FIELD_EMAIL => $user->getEmail(),
-                self::FIELD_PASSWORD => $user->getPassword(),
-                self::FIELD_VERIFIED => $user->isVerified(),
-                self::FIELD_VERIFICATION_TOKEN => $user->getVerificationToken(),
-            ])
-        );
-    }
 
     public function getById(int $id): ?User
     {
@@ -52,6 +40,12 @@ class UserRepository
         );
     }
 
+    public function getTotalCount(): int
+    {
+        return $this->explorer->table(self::TABLE_NAME)
+            ->count();
+    }
+
     public function findByVerificationToken(string $token): ?User
     {
         return $this->mapToUser(
@@ -61,11 +55,40 @@ class UserRepository
         );
     }
 
-    public function update(int $id, array $data): int
+    /**
+     * @param int $limit
+     * @param int $offset
+     * @return ActiveRow[]
+     */
+    public function fetchUsersByPage(int $limit, int $offset): array
     {
         return $this->explorer->table(self::TABLE_NAME)
-            ->where(self::FIELD_ID, $id)
-            ->update($data);
+            ->limit($limit, $offset)
+            ->fetchAll();
+    }
+
+    public function create(User $user): User
+    {
+        return $this->mapToUser(
+            $this->explorer->table(self::TABLE_NAME)->insert([
+                self::FIELD_USERNAME => $user->getUsername(),
+                self::FIELD_EMAIL => $user->getEmail(),
+                self::FIELD_PASSWORD => $user->getPassword(),
+                self::FIELD_VERIFIED => $user->isVerified(),
+            ])
+        );
+    }
+
+    public function update(User $user): int
+    {
+        return $this->explorer->table(self::TABLE_NAME)
+            ->where(self::FIELD_ID, $user->getId())
+            ->update([
+                self::FIELD_USERNAME => $user->getUsername(),
+                self::FIELD_EMAIL => $user->getEmail(),
+                self::FIELD_PASSWORD => $user->getPassword(),
+                self::FIELD_MODIFIED_AT => new DateTime()
+            ]);
     }
 
     public function delete(int $id): int

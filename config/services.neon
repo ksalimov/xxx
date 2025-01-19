@@ -3,6 +3,12 @@ services:
 	- App\UseCase\SignUpUseCase\SignUpUseCase
 	- App\UseCase\SendVerificationEmailUseCase\SendVerificationEmailUseCase(%email.senderEmail%, %email.senderName%)
 	- App\UseCase\VerifyEmailUseCase\VerifyEmailUseCase
+	- App\UseCase\ManageUsersAdminUseCase\ManageUsersAdminUseCase
+	- App\UseCase\EditUserUseCase\EditUserUseCase
+	- App\UseCase\UpdateUserUseCase\UpdateUserUseCase
+	- App\UseCase\DeleteUserUseCase\DeleteUserUseCase
+	- App\Service\UserService
+	- App\Service\UserValidationService
 	security.passwords: Nette\Security\Passwords(::PASSWORD_BCRYPT, [cost: 12])
 
 search:

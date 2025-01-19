@@ -8,7 +8,7 @@ use Throwable;
 use Tracy\Debugger;
 use Tracy\ILogger;
 
-class VerifyEmailUseCase
+readonly class VerifyEmailUseCase
 {
     public function __construct(
         readonly private UserRepository $userRepository,

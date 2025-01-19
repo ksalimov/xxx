@@ -12,13 +12,13 @@ use Throwable;
 use Tracy\Debugger;
 use Tracy\ILogger;
 
-class SignUpUseCase
+readonly class SignUpUseCase
 {
     public function __construct(
-        readonly private SendVerificationEmailUseCase $sendVerificationEmailUseCase,
-        readonly private UserService $userService,
-        readonly private Explorer $explorer,
-        readonly private ILogger $logger,
+        private SendVerificationEmailUseCase $sendVerificationEmailUseCase,
+        private UserService $userService,
+        private Explorer $explorer,
+        private ILogger $logger,
     ) {}
 
     public function execute(SignUpRequest $request): void
@@ -27,7 +27,6 @@ class SignUpUseCase
 
         $this->explorer->beginTransaction();
         try {
-            $this->userService->validateUserNotExists($formData);
             $this->userService->createUser($formData);
 
             $this->sendVerificationEmailUseCase->execute(

@@ -8,7 +8,7 @@ use Nette\Mail\Mailer;
 use Nette\Mail\Message;
 use Nette\Utils\Random;
 
-class SendVerificationEmailUseCase
+readonly class SendVerificationEmailUseCase
 {
     public function __construct(
         private string $senderEmail,
@@ -26,7 +26,7 @@ class SendVerificationEmailUseCase
         $verificationLink = $this->getVerificationLink($token);
 
         $mail = $this->createVerificationEmail($userEmail, $verificationLink);
-        $this->mailer->send($mail);
+//        $this->mailer->send($mail);
     }
 
     private function getVerificationToken(): string
