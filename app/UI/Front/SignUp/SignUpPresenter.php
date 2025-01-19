@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\UI\Front\SignUp;
 
 use App\Exception\UseCaseException;
+use App\Exception\UserAlreadyExistsException;
 use App\Mapper\FormData\UserFormData;
 use App\UseCase\SignUpUseCase\Exception\UserAlreadyExistsException;
 use App\UseCase\SignUpUseCase\SignUpRequest;

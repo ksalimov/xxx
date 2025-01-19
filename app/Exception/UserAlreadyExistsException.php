@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCase\SignUpUseCase\Exception;
+namespace App\Exception;
 
 use Nette\Schema\ValidationException;
 
