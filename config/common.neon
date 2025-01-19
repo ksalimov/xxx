@@ -11,7 +11,7 @@ application:
 
 
 database:
-	dsn: 'mysql:host=db;port=3306;dbname=user_registration'
+	dsn: 'mysql:host=db;port=3306;dbname=xxx'
 	user: 'root'
 	password: 'root'
 
