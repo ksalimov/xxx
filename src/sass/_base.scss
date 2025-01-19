@@ -1,0 +1,7 @@
+@use 'variables' as v;
+
+body {
+  font-family: v.$font-stack;
+  line-height: 1.6;
+  color: #333;
+}

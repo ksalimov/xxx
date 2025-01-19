@@ -48,7 +48,10 @@ class SignUpPresenter extends Presenter
         } catch (UserAlreadyExistsException $e) {
             $form[UserFormFactory::FIELD_EMAIL]->addError($e->getMessage());
         } catch (UseCaseException $e) {
-            $form->addError('Something went wrong. Please try again later or contact support if the issue continues.');
+            $this->flashMessage(
+                'Something went wrong. Please try again later or contact support if the issue continues.',
+                'danger'
+            );
         }
     }
 }

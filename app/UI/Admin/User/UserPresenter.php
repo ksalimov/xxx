@@ -98,7 +98,7 @@ class UserPresenter extends Presenter
         } catch (UserAlreadyExistsException $e) {
             $form[UserFormFactory::FIELD_EMAIL]->addError($e->getMessage());
         } catch (UseCaseException $e) {
-            $form->addError('Something went wrong.', 'danger');
+            $this->flashMessage('Something went wrong.', 'danger');
         }
     }
 
@@ -130,7 +130,7 @@ class UserPresenter extends Presenter
         } catch (UserAlreadyExistsException $e) {
             $form[UserFormFactory::FIELD_EMAIL]->addError($e->getMessage());
         } catch (UseCaseException $e) {
-            $form->addError('Something went wrong.', 'danger');
+            $this->flashMessage('Something went wrong.', 'danger');
         }
     }
 

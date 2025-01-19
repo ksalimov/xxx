@@ -26,7 +26,7 @@ readonly class SendVerificationEmailUseCase
         $verificationLink = $this->getVerificationLink($token);
 
         $mail = $this->createVerificationEmail($userEmail, $verificationLink);
-//        $this->mailer->send($mail);
+        $this->mailer->send($mail);
     }
 
     private function getVerificationToken(): string

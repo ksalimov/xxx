@@ -5,6 +5,10 @@
 	<meta name="viewport" content="width=device-width">
 
 	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+
+	{block stylesheets}
+	<link rel="stylesheet" href="/css/app.css">
+	{/block}
 </head>
 
 <body>

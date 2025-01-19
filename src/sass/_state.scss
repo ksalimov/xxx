@@ -1,0 +1,9 @@
+@use 'variables' as v;
+
+.is-invalid {
+  .form__group:has(.form__error) {
+    .form__input {
+      border-color: v.$error-color;
+    }
+  }
+}
