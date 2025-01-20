@@ -1,52 +1,65 @@
-Nette Web Project
-=================
+# XXX
 
-Welcome to the Nette Web Project! This is a basic skeleton application built using
-[Nette](https://nette.org), ideal for kick-starting your new web projects.
+## Running the Project
 
-Nette is a renowned PHP web development framework, celebrated for its user-friendliness,
-robust security, and outstanding performance. It's among the safest choices
-for PHP frameworks out there.
+To get the project up and running, follow the steps below:
 
-If Nette helps you, consider supporting it by [making a donation](https://nette.org/donate).
-Thank you for your generosity!
+1. **Build the project:**
+    ```bash
+    npm run build
+    ```
 
+2. **Start Docker containers:**
+    ```bash
+    docker compose up -d
+    ```
 
-Requirements
-------------
+3. **Run migrations manually:**
+    - Migrations can be found in the `migrations` directory. Execute the necessary migration steps to set up your database.
 
-This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
+4. **Configure Mailer:**
+    - Set up your mailer configuration to enable email functionalities such as email verification.
 
+5. **Database:**
+    - The database `xxx` is automatically created.
 
-Installation
-------------
+---
 
-To install the Web Project, Composer is the recommended tool. If you're new to Composer,
-follow [these instructions](https://doc.nette.org/composer). Then, run:
+## Improvements
 
-	composer create-project nette/web-project path/to/install
-	cd path/to/install
+- The migration process could benefit from using a robust migration library.
+- The `UserRepository` could potentially be split into Command and Query repositories for a more domain-driven design.
+- It's recommended to use an ORM for managing database interactions.
 
-Ensure the `temp/` and `log/` directories are writable.
+---
 
+### Emails
 
-Web Server Setup
-----------------
+- A very simple email verification process has been implemented. However, a dedicated library like JWT should be used for improved security and flexibility.
+- For sending more complex emails, `Nette\Bridges\ApplicationLatte\TemplateFactory` should be utilized.
 
-To quickly dive in, use PHP's built-in server:
+---
 
-	php -S localhost:8000 -t www
+### Admin Area
 
-Then, open `http://localhost:8000` in your browser to view the welcome page.
+1. **Password Protection:**
+    - The admin area should have password protection to secure access.
 
-For Apache or Nginx users, configure a virtual host pointing to your project's `www/` directory.
+2. **User Update Process:**
+    - The current user update process is simple and could be enhanced, for instance, by tracking whether a field has been changed before updating.
 
-**Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
-Refer to [security warning](https://nette.org/security-warning) for more details.
+3. **Use Case Refactor:**
+    - The same use case (`SignUpUseCase`) is used for user creation via the admin area with email verification. However, if different behavior is needed (e.g., setting the `verified` flag to `true` during user creation), a separate use case (such as `CreateUserUseCase`) should be created to handle this scenario.
 
+4. **User Update Implementation:**
+    - User update is done on a separate page but could be implemented directly on the 'User Management' page if needed.
 
-Minimal Skeleton
-----------------
+5. **Missing Features on User Management Page:**
+    - Sorting and searching functionalities are not yet implemented on the 'User Management' page.
 
-For demonstrating issues or similar tasks, rather than starting a new project, use
-this [minimal skeleton](https://github.com/nette/web-project/tree/minimal).
+---
+
+## Skipped
+
+1. **Documentation**
+2. **Unit Tests**
