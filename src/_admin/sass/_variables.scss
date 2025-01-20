@@ -1,29 +1,22 @@
-// Primary color scheme
-$primary-color: #007bff;
-$hover-color: #0056b3;
-
-// Back link specific colors
-$back-link-bg: #f8f9fa;
-$back-link-color: #343a40;
-$back-link-border: #ced4da;
-
-// Other color utilities
-$error-color: #dc3545;
-$success-color: #28a745;
-$info-color: #17a2b8;
-
 // Spacing and layout
 $padding-small: 0.5rem;
 $padding-medium: 1rem;
 $border-radius-small: 4px;
 
-// Vertical margins for wrapper
-$wrapper-margin-top: 20px;
-$wrapper-margin-bottom: 20px;
-
 // Typography
 $font-weight-bold: 700;
 $font-size-base: 1rem;
+
+$border-radius-small: 4px;
+
+// Primary color scheme
+$primary-color: #007bff;
+$hover-color: #0056b3;
+
+// Other color utilities
+$error-color: #dc3545;
+$success-color: #28a745;
+$info-color: #17a2b8;
 
 // Link colors
 $link-color: $primary-color; // Defined in previous variables
@@ -46,8 +39,6 @@ $table-border-color: #dee2e6;
 $table-row-alt-bg: #f8f9fa;
 $table-row-hover-bg: #e9ecef;
 
-// _variables.scss
-
 // Action button colors
 $action-edit-bg: #007bff;
 $action-edit-color: white;
@@ -61,10 +52,6 @@ $action-delete-focus-outline: rgba(220, 53, 69, 0.5);
 
 $action-disabled-bg: #e0e0e0;
 $action-disabled-color: #aaa;
-
-$border-radius-small: 4px;
-
-// _variables.scss
 
 // Pagination colors and settings
 $pagination-text-color: #333;

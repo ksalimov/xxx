@@ -1,8 +1,41 @@
 $font-stack: Arial, sans-serif;
+
+// Container width settings
+$container-fixed-width: 600px;
+$container-padding: 1rem;
+
+// Vertical margins for wrapper
+$wrapper-margin-top: 20px;
+$wrapper-margin-bottom: 20px;
+
+// Typography
+$font-weight-bold: 700;
+$font-size-base: 1rem;
+
+// Spacing and layout
+$padding-small: 0.5rem;
+$padding-medium: 1rem;
+$border-radius-small: 4px;
+
+// Primary color scheme
+$primary-color: #007bff;
+$hover-color: #0056b3;
+
+// Back link specific colors
+$back-link-bg: #f8f9fa;
+$back-link-color: #343a40;
+$back-link-border: #ced4da;
+
 $primary-color: #007bff;
 $error-color: #dc3545;
 $label-color: #333;
 $input-border-color: #ccc;
 
-// Container width settings
-$container-fixed-width: 600px;
+// Button colors
+$button-bg: #007bff;
+$button-text-color: #ffffff;
+$button-border-color: #007bff;
+
+// Add button specific colors
+$add-button-bg: #28a745;
+$add-button-color: #ffffff;

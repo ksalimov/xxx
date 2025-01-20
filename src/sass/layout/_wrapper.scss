@@ -1,0 +1,10 @@
+@use '../variables' as v;
+
+.wrapper {
+  margin-top: v.$wrapper-margin-top;
+  margin-bottom: v.$wrapper-margin-bottom;
+
+  &--back-link {
+    margin-top: 0;
+  }
+}

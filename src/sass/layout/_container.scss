@@ -2,7 +2,7 @@
 
 .container {
   margin: 0 auto;
-  padding: 1rem;
+  padding: v.$container-padding;
   width: 100%;
 
   &--fixed {
