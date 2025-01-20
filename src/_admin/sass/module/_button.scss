@@ -1,0 +1,30 @@
+@use 'sass:color';
+@use '../variables' as v;
+
+.button {
+  display: inline-block;
+  padding: v.$padding-small v.$padding-medium;
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-bold;
+  color: v.$button-text-color;
+  background-color: v.$button-bg;
+  border: 1px solid v.$button-border-color;
+  border-radius: v.$border-radius-small;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color.adjust(v.$button-bg, $lightness: -10%);
+    border-color: color.adjust(v.$button-border-color, $lightness: -10%);
+  }
+
+  &--add {
+    background-color: v.$add-button-bg;
+    color: v.$add-button-color;
+
+    &:hover {
+      background-color: color.adjust(v.$add-button-bg, $lightness: -10%);
+    }
+  }
+}

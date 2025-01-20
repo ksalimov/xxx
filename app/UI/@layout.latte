@@ -14,7 +14,9 @@
 <body>
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
+	<div class="container">
 	{include content}
+	</div>
 
 	{block scripts}
 	<script src="/js/app.js"></script>

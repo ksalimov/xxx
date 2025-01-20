@@ -1,5 +1,11 @@
+@use '../variables' as v;
+
 .container {
-  max-width: 600px;
   margin: 0 auto;
   padding: 1rem;
+  width: 100%;
+
+  &--fixed {
+    max-width: v.$container-fixed-width;
+  }
 }

@@ -1,0 +1,78 @@
+// Primary color scheme
+$primary-color: #007bff;
+$hover-color: #0056b3;
+
+// Back link specific colors
+$back-link-bg: #f8f9fa;
+$back-link-color: #343a40;
+$back-link-border: #ced4da;
+
+// Other color utilities
+$error-color: #dc3545;
+$success-color: #28a745;
+$info-color: #17a2b8;
+
+// Spacing and layout
+$padding-small: 0.5rem;
+$padding-medium: 1rem;
+$border-radius-small: 4px;
+
+// Vertical margins for wrapper
+$wrapper-margin-top: 20px;
+$wrapper-margin-bottom: 20px;
+
+// Typography
+$font-weight-bold: 700;
+$font-size-base: 1rem;
+
+// Link colors
+$link-color: $primary-color; // Defined in previous variables
+$danger-color: $error-color; // Defined in previous variables
+
+// Button colors
+$button-bg: #007bff;
+$button-text-color: #ffffff;
+$button-border-color: #007bff;
+
+// Add button specific colors
+$add-button-bg: #28a745;
+$add-button-color: #ffffff;
+
+// Table colors
+$table-bg: #ffffff;
+$table-header-bg: #343a40;
+$table-header-color: #ffffff;
+$table-border-color: #dee2e6;
+$table-row-alt-bg: #f8f9fa;
+$table-row-hover-bg: #e9ecef;
+
+// _variables.scss
+
+// Action button colors
+$action-edit-bg: #007bff;
+$action-edit-color: white;
+$action-edit-bg-hover: #0056b3;
+$action-edit-focus-outline: rgba(0, 123, 255, 0.5);
+
+$action-delete-bg: #dc3545;
+$action-delete-color: white;
+$action-delete-bg-hover: #c82333;
+$action-delete-focus-outline: rgba(220, 53, 69, 0.5);
+
+$action-disabled-bg: #e0e0e0;
+$action-disabled-color: #aaa;
+
+$border-radius-small: 4px;
+
+// _variables.scss
+
+// Pagination colors and settings
+$pagination-text-color: #333;
+$pagination-link-background: #f5f5f5;
+$pagination-link-color: #007bff;
+$pagination-link-hover-background: #007bff;
+$pagination-link-hover-color: white;
+$pagination-link-disabled-background: #e0e0e0;
+$pagination-link-disabled-color: #aaa;
+$pagination-info-color: #666;
+$pagination-focus-outline: rgba(0, 123, 255, 0.5);

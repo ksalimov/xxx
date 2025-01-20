@@ -1,0 +1,30 @@
+@use 'sass:color';
+@use '../variables' as v;
+
+.link {
+  color: v.$primary-color;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+
+  &:hover {
+    color: v.$hover-color;
+    text-decoration: underline;
+  }
+
+  &--back {
+    display: inline-block;
+    background-color: v.$back-link-bg;
+    color: v.$back-link-color;
+    border: 1px solid v.$back-link-border;
+    padding: 0.5rem 1rem;
+    text-align: center;
+
+    &:hover {
+      background-color: color.adjust(v.$back-link-bg, $lightness: -10%);
+      border-color: color.adjust(v.$back-link-border, $lightness: -10%);
+      text-decoration: none;
+    }
+  }
+}

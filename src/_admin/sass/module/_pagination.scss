@@ -1,0 +1,49 @@
+@use '../variables' as v;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: v.$pagination-text-color;
+
+  a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: v.$border-radius-small;
+    background-color: v.$pagination-link-background;
+    color: v.$pagination-link-color;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: v.$pagination-link-hover-background;
+      color: v.$pagination-link-hover-color;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px v.$pagination-focus-outline;
+    }
+
+    &.disabled, &:disabled {
+      background-color: v.$pagination-link-disabled-background;
+      color: v.$pagination-link-disabled-color;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+
+  .pagination-info {
+    font-size: 1rem;
+    color: v.$pagination-info-color;
+    margin: 0 1rem;
+  }
+
+  .separator {
+    margin: 0 0.5rem;
+  }
+}

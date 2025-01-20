@@ -1,0 +1,85 @@
+@use '../variables' as v;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background-color: v.$table-bg;
+  font-size: v.$font-size-base;
+
+  &__header {
+    background-color: v.$table-header-bg;
+    color: v.$table-header-color;
+    text-align: left;
+
+    th {
+      padding: v.$padding-small v.$padding-medium;
+      border-bottom: 2px solid v.$table-border-color;
+    }
+  }
+
+  &__row {
+    &:nth-child(even) {
+      background-color: v.$table-row-alt-bg;
+    }
+
+    &:hover {
+      background-color: v.$table-row-hover-bg;
+    }
+  }
+
+  &__cell {
+    padding: v.$padding-small v.$padding-medium;
+    border-bottom: 1px solid v.$table-border-color;
+
+    &--actions {
+      display: flex;
+      gap: 0.5rem;
+
+      a {
+        display: inline-block;
+        padding: 0.25rem 0.5rem; // Compact padding
+        font-size: 0.875rem; // Smaller text
+        border-radius: v.$border-radius-small;
+        text-decoration: none;
+        text-align: center;
+        width: auto;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+
+        &.edit {
+          background-color: v.$action-edit-bg;
+          color: v.$action-edit-color;
+
+          &:hover {
+            background-color: v.$action-edit-bg-hover;
+          }
+
+          &:focus {
+            box-shadow: 0 0 0 2px v.$action-edit-focus-outline;
+          }
+        }
+
+        &.delete {
+          background-color: v.$action-delete-bg;
+          color: v.$action-delete-color;
+
+          &:hover {
+            background-color: v.$action-delete-bg-hover;
+          }
+
+          &:focus {
+            box-shadow: 0 0 0 2px v.$action-delete-focus-outline;
+          }
+        }
+
+        &.disabled, &:disabled {
+          background-color: v.$action-disabled-bg;
+          color: v.$action-disabled-color;
+          cursor: not-allowed;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
 {block content}
     <h1>User Management</h1>
 
-    <a n:href="add">Add new user</a>
+    <div class="wrapper">
+        <a n:href="add" class="button button--add">Add new user</a>
+    </div>
 
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="table__header">
         <tr>
             <th>ID</th>
             <th>Username</th>
@@ -16,15 +18,22 @@
         </thead>
         <tbody>
         {foreach $users as $user}
-            <tr>
-                <td>{$user->id}</td>
-                <td>{$user->username}</td>
-                <td>{$user->email}</td>
-                <td>{if $user->verified}Yes{else}No{/if}</td>
-                <td>{$user->created_at}</td>
-                <td>
-                    <a n:href="edit, $user->id">Edit</a>
-                    <a n:href="delete!, $user->id" onclick="return confirm('Are you sure?')">Delete</a>
+            <tr class="table__row">
+                <td class="table__cell">{$user->id}</td>
+                <td class="table__cell">{$user->username}</td>
+                <td class="table__cell">{$user->email}</td>
+                <td class="table__cell">{if $user->verified}Yes{else}No{/if}</td>
+                <td class="table__cell">{$user->created_at}</td>
+                <td class="table__cell">
+                    <div class="table__cell--actions">
+                        <a n:href="edit, $user->id" class="edit">Edit</a>
+                        <a
+                                n:href="delete!, $user->id"
+                                onclick="return confirm('Are you sure?')"
+                                class="delete">
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
         {/foreach}
@@ -34,17 +43,17 @@
         <div class="pagination">
             {if !$paginator->isFirst()}
                 <a n:href="default, 1">First</a>
-                &nbsp;|&nbsp;
+                <span class="separator">|</span>
                 <a n:href="default, $paginator->page-1">Previous</a>
-                &nbsp;|&nbsp;
+                <span class="separator">|</span>
             {/if}
 
-            Page {$paginator->getPage()} of {$paginator->getPageCount()}
+        <span class="pagination-info">Page {$paginator->getPage()} of {$paginator->getPageCount()}</span>
 
-	        {if !$paginator->isLast()}
-                &nbsp;|&nbsp;
+        {if !$paginator->isLast()}
+                <span class="separator">|</span>
                 <a n:href="default, $paginator->getPage() + 1">Next</a>
-                &nbsp;|&nbsp;
+                <span class="separator">|</span>
                 <a n:href="default, $paginator->getPageCount()">Last</a>
             {/if}
         </div>
