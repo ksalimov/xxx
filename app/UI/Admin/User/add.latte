@@ -1,7 +1,35 @@
 {block content}
 <a n:href="default">Back to User List</a>
 
-<h1>Create User</h1>
+<div class="container">
+    <h1>Create User</h1>
 
-{control addUserForm}
+    <form n:name="addUserForm">
+        <div class="form__group">
+            <label for="username" class="form__label">Username:</label>
+            <input type="text" n:name="username" id="username" class="form__input">
+            <div n:if="$form['username']->error" class="form__error">
+                {$form['username']->error}
+            </div>
+        </div>
+
+        <div class="form__group">
+            <label for="email" class="form__label">Email:</label>
+            <input type="email" n:name="email" id="email" class="form__input">
+            <div n:if="$form['email']->error" class="form__error">
+                {$form['email']->error}
+            </div>
+        </div>
+
+        <div class="form__group">
+            <label for="password" class="form__label">Password:</label>
+            <input type="password" n:name="password" id="password" class="form__input">
+            <div n:if="$form['password']->error" class="form__error">
+                {$form['password']->error}
+            </div>
+        </div>
+
+        <button type="submit" class="form__button">Create User</button>
+    </form>
+</div>
 {/block}
