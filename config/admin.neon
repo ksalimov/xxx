@@ -1,0 +1,6 @@
+parameters:
+    itemsPerPage: 20
+
+
+services:
+    - App\UI\Admin\User\UserPresenter(%itemsPerPage%)

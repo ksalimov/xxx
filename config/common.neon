@@ -3,6 +3,7 @@ parameters:
         senderEmail: 'no-reply@example.com'
         senderName: 'Example'
 
+
 application:
 	errorPresenter:
 		4xx: Error:Error4xx
@@ -27,3 +28,7 @@ di:
 	export:
 		parameters: no
 		tags: no
+
+
+includes:
+    - admin.neon

@@ -26,10 +26,10 @@ use Nette\Http\Session;
 
 class UserPresenter extends Presenter
 {
-    private int $itemsPerPage = 2;
     private ?User $userEntity = null;
 
     public function __construct(
+        private int $itemsPerPage,
         private ManageUsersAdminUseCase $manageUsersAdminUseCase,
         private SignUpUseCase $signUpUseCase,
         private EditUserUseCase $editUserUseCase,
