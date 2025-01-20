@@ -3,11 +3,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
-        app: './src/js/app.js',
+        app: './src/js/app.js', // Front area entry
+        admin: './src/_admin/js/admin.js', // Admin area entry
     },
     output: {
         path: path.resolve(__dirname, '../www'),
-        filename: 'js/[name].js'
+        filename: (pathData) => {
+            return pathData.chunk.name === 'admin'
+                ? 'admin/js/[name].js' // Admin output path
+                : 'js/[name].js';      // Front output path
+        },
     },
     module: {
         rules: [
@@ -30,7 +35,11 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
+            filename: (pathData) => {
+                return pathData.chunk.name === 'admin'
+                    ? 'admin/css/[name].css' // Admin CSS output path
+                    : 'css/[name].css';     // Front CSS output path
+            },
         }),
     ]
 };
